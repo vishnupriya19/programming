@@ -1,0 +1,2391 @@
+{
+  "openapi": "3.0.0",
+  "info": {
+    "title": "Niyo UAT Copy",
+    "version": "1.0.0"
+  },
+  "servers": [
+    {
+      "url": "https://test-phoenix.creditvidya.com"
+    }
+  ],
+  "components": {
+    "securitySchemes": {
+      "apikeyAuth": {
+        "type": "http",
+        "scheme": "apikey"
+      }
+    }
+  },
+  "security": [
+    {
+      "apikeyAuth": []
+    }
+  ],
+  "paths": {
+    "/marketplace/mw/loans/v2/register-start/pl": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Register and Start Loan",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "userId": "9100071659",
+                  "mobileNo": "9100071659"
+                },
+                "properties": {
+                  "userId": {
+                    "type": "string"
+                  },
+                  "mobileNo": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "security": [
+          {
+            "apikeyAuth": []
+          }
+        ],
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                },
+                "examples": {
+                  "example-0": {
+                    "summary": "Success",
+                    "value": "{\r\n      \"status\": \"success\",\r\n      \"data\" : {\r\n             \"loanId\": \"5d4291ce07467a392612b7f4\"\r\n       }\r\n}\r\n"
+                  },
+                  "example-1": {
+                    "summary": "Duplicate registration of the mobile number for same userId",
+                    "value": "{\r\n\t\"status\": \"failure\",\r\n\t\"errors\": [{\r\n\t\t\"errorCode\": \"CV-112\",\r\n\t\t\"errorMessage\": \"Duplicate registration of the mobile number for same userId\"\r\n\t}]\r\n}"
+                  },
+                  "example-2": {
+                    "summary": "Invalid fields in the request",
+                    "value": "{\r\n    \"status\": \"failure\",\r\n    \"errors\": [\r\n        {\r\n            \"errorCode\": \"CV-302\",\r\n            \"errorMessage\": \"Invalid fields in the request\",\r\n            \"errorFields\": [\r\n                \"mobileNo\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+                  },
+                  "example-3": {
+                    "summary": "Mandatory fields are required",
+                    "value": "{\r\n    \"status\": \"failure\",\r\n    \"errors\": [\r\n        {\r\n            \"errorCode\": \"CV-304\",\r\n            \"errorMessage\": \"Mandatory fields are missing in the request\",\r\n            \"errorFields\": [\r\n                \"mobileNo\"\r\n            ]\r\n        }\r\n    ]\r\n}"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                },
+                "example": "{\r\n    \"message\": \"Invalid authentication credentials\"\r\n}"
+              }
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/v3/application-details/form1": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Send Application Details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "loanId": "{{loanId}}",
+                  "name": "vineela vennela",
+                  "gender": "female",
+                  "dob": "24/06/1995",
+                  "panNumber": "AADPN0409B",
+                  "personalEmailId": "vineela.venne4amnb1@creditvidya.com",
+                  "employmentType": "salaried",
+                  "income": 63000,
+                  "currentAddressLine1": "Villivakkam, Villivakkam, Chennai,,,House  1-24-586mula#&*124586mula",
+                  "currentAddressCity": "address,city,state,pincode",
+                  "currentAddressDistrict": "address,city,state,pincode",
+                  "currentAddressState": "address,city,state,pincode",
+                  "currentAddressPincode": "500081",
+                  "bureauConsent": true,
+                  "consentIPAddress": "12.23.56.45"
+                },
+                "properties": {
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "name": {
+                    "type": "string"
+                  },
+                  "gender": {
+                    "type": "string"
+                  },
+                  "dob": {
+                    "type": "string"
+                  },
+                  "panNumber": {
+                    "type": "string"
+                  },
+                  "personalEmailId": {
+                    "type": "string"
+                  },
+                  "employmentType": {
+                    "type": "string"
+                  },
+                  "income": {
+                    "type": "number"
+                  },
+                  "currentAddressLine1": {
+                    "type": "string"
+                  },
+                  "currentAddressCity": {
+                    "type": "string"
+                  },
+                  "currentAddressDistrict": {
+                    "type": "string"
+                  },
+                  "currentAddressState": {
+                    "type": "string"
+                  },
+                  "currentAddressPincode": {
+                    "type": "string"
+                  },
+                  "bureauConsent": {
+                    "type": "boolean"
+                  },
+                  "consentIPAddress": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/v4/decision": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Send Decision",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "loanId": "{{loanId}}",
+                  "decisionType": "final",
+                  "medhasVersion": "7.7.7",
+                  "decision": {
+                    "product": "PL",
+                    "timeEpoch": 1648805935000,
+                    "dpName": "Niyo",
+                    "creditDecisions": [
+                      {
+                        "offers": [
+                          {
+                            "offerType": "final",
+                            "documentsRequired": [],
+                            "high": 25000,
+                            "minProcessingFee": 1500,
+                            "processingFeePercent": 5,
+                            "low": 25000,
+                            "offerScenario": [
+                              "AMB"
+                            ],
+                            "roi": 31,
+                            "tenure": 6
+                          },
+                          {
+                            "offerType": "final",
+                            "documentsRequired": [],
+                            "high": 75000,
+                            "minProcessingFee": 1500,
+                            "processingFeePercent": 5,
+                            "low": 25000,
+                            "offerScenario": [
+                              "AMB"
+                            ],
+                            "roi": 27.99,
+                            "tenure": 12
+                          },
+                          {
+                            "offerType": "final",
+                            "documentsRequired": [],
+                            "high": 109200,
+                            "minProcessingFee": 1500,
+                            "processingFeePercent": 4,
+                            "low": 30000,
+                            "offerScenario": [
+                              "AMB"
+                            ],
+                            "roi": 27.99,
+                            "tenure": 18
+                          },
+                          {
+                            "offerType": "final",
+                            "documentsRequired": [],
+                            "high": 136600,
+                            "minProcessingFee": 1500,
+                            "processingFeePercent": 4,
+                            "low": 40000,
+                            "offerScenario": [
+                              "AMB"
+                            ],
+                            "roi": 27.99,
+                            "tenure": 24
+                          }
+                        ],
+                        "policyVersion": "CV_PRIME_PL_APPROVAL_HFC_CV_T15_1.0.1",
+                        "offerType": "final",
+                        "decisionScenario": "UNKNOWN",
+                        "configVersion": "CV_PRIME_PL_APPROVAL_HFC_CV_T15_1.0.1",
+                        "lenderName": "HFC",
+                        "decisionStatus": "APPROVED",
+                        "userType": "OTC",
+                        "templateId": "CV_PRIME_PL_APPROVAL_T15",
+                        "decisionReasonsCode": [],
+                        "remarks": {},
+                        "decisionReasons": []
+                      }
+                    ],
+                    "userId": "131843754",
+                    "version": "1.4.3",
+                    "status": "SUCCESS"
+                  },
+                  "lenderComplianceVariables": {
+                    "income": {
+                      "trueSalary": 15219.87,
+                      "bucketType": "5b",
+                      "version": "1.2.6",
+                      "predictedIncomeBucket": {
+                        "higherValue": 20000,
+                        "confidence": 94,
+                        "lowerValue": 0
+                      },
+                      "trueSalaryConfidence": "Low"
+                    },
+                    "countActiveAccounts": 8,
+                    "cashFlowAMBDays90": 92,
+                    "cashFlowAMBDays120": 123,
+                    "totalDebitAmount": {
+                      "month0": 0,
+                      "month1": 335036.63,
+                      "month2": 715799.15
+                    },
+                    "cashFlowAMBDays30": 31,
+                    "cashFlowCreditCount30": 10,
+                    "cashFlowAMB30": 232900.68999999997,
+                    "cashFlowAMB90": 211031.18663043473,
+                    "allBankAccounts": [
+                      {
+                        "bankCode": "barb",
+                        "accountName": "bank of baroda",
+                        "debitCardDebitAmounts": {
+                          "month0": null,
+                          "month1": null
+                        },
+                        "debitCardTransactionCounts": {
+                          "month0": null,
+                          "month1": null
+                        },
+                        "debitCounts": {
+                          "month0": 0,
+                          "month1": 6,
+                          "month2": 15
+                        },
+                        "lastBalanceDate": "2021-10-29 21:52:55",
+                        "creditCounts": {
+                          "month0": 0,
+                          "month1": 17,
+                          "month2": 21
+                        },
+                        "accountNumber": "1633",
+                        "priority": 1,
+                        "lastBalance": 86335.69,
+                        "debitCardNumber": null,
+                        "debitAmounts": {
+                          "month0": 0,
+                          "month1": 57544.2,
+                          "month2": 133841.6
+                        },
+                        "creditAmounts": {
+                          "month0": 0,
+                          "month1": 94890,
+                          "month2": 125262
+                        },
+                        "amb60": 63062.35885245898,
+                        "amb30": 78537.99322580644,
+                        "aggregateAMB": 60441.83444444443,
+                        "activeAMB": 55772.450655737695
+                      },
+                      {
+                        "bankCode": "hdfc",
+                        "accountName": "hdfc bank",
+                        "debitCardDebitAmounts": {
+                          "month0": null,
+                          "month1": null
+                        },
+                        "debitCardTransactionCounts": {
+                          "month0": null,
+                          "month1": null
+                        },
+                        "debitCounts": {
+                          "month0": 0,
+                          "month1": 7,
+                          "month2": 9
+                        },
+                        "lastBalanceDate": "2021-10-20 18:31:20",
+                        "creditCounts": {
+                          "month0": 0,
+                          "month1": 2,
+                          "month2": 2
+                        },
+                        "accountNumber": "6115",
+                        "priority": 2,
+                        "lastBalance": 30605.92,
+                        "debitCardNumber": null,
+                        "debitAmounts": {
+                          "month0": 0,
+                          "month1": 35128,
+                          "month2": 71658.8
+                        },
+                        "creditAmounts": {
+                          "month0": 0,
+                          "month1": 65535.87,
+                          "month2": 71515
+                        },
+                        "amb60": 25026.764754098345,
+                        "amb30": 33993.016774193566,
+                        "aggregateAMB": 23367.139861111107,
+                        "activeAMB": 22061.78606557377
+                      },
+                      {
+                        "bankCode": "hdfc",
+                        "accountName": "hdfc bank",
+                        "debitCardDebitAmounts": {
+                          "month0": null,
+                          "month1": null
+                        },
+                        "debitCardTransactionCounts": {
+                          "month0": null,
+                          "month1": null
+                        },
+                        "debitCounts": {
+                          "month0": 0,
+                          "month1": 1,
+                          "month2": 6
+                        },
+                        "lastBalanceDate": "2021-10-08 19:17:05",
+                        "creditCounts": {
+                          "month0": 0,
+                          "month1": 3,
+                          "month2": 8
+                        },
+                        "accountNumber": "6920",
+                        "priority": 3,
+                        "lastBalance": 64575.76,
+                        "debitCardNumber": null,
+                        "debitAmounts": {
+                          "month0": 0,
+                          "month1": 11972,
+                          "month2": 145387.86
+                        },
+                        "creditAmounts": {
+                          "month0": 0,
+                          "month1": 40300,
+                          "month2": 173356
+                        },
+                        "amb60": 48575.67262295078,
+                        "amb30": 64575.76,
+                        "aggregateAMB": 42953.581666666665,
+                        "activeAMB": 39054.50032786885
+                      }
+                    ],
+                    "monthlyObligation": 5336.530000000001,
+                    "countAccounts": 8,
+                    "dvVersion": "1.4.8",
+                    "creditDecisions": [
+                      {
+                        "offers": [
+                          {
+                            "offerType": "final",
+                            "documentsRequired": [],
+                            "high": 25000,
+                            "minProcessingFee": 1500,
+                            "processingFeePercent": 5,
+                            "low": 25000,
+                            "offerScenario": [
+                              "AMB"
+                            ],
+                            "roi": 31,
+                            "tenure": 6
+                          },
+                          {
+                            "offerType": "final",
+                            "documentsRequired": [],
+                            "high": 75000,
+                            "minProcessingFee": 1500,
+                            "processingFeePercent": 5,
+                            "low": 25000,
+                            "offerScenario": [
+                              "AMB"
+                            ],
+                            "roi": 27.99,
+                            "tenure": 12
+                          },
+                          {
+                            "offerType": "final",
+                            "documentsRequired": [],
+                            "high": 109200,
+                            "minProcessingFee": 1500,
+                            "processingFeePercent": 4,
+                            "low": 30000,
+                            "offerScenario": [
+                              "AMB"
+                            ],
+                            "roi": 27.99,
+                            "tenure": 18
+                          },
+                          {
+                            "offerType": "final",
+                            "documentsRequired": [],
+                            "high": 136600,
+                            "minProcessingFee": 1500,
+                            "processingFeePercent": 4,
+                            "low": 40000,
+                            "offerScenario": [
+                              "AMB"
+                            ],
+                            "roi": 27.99,
+                            "tenure": 24
+                          }
+                        ],
+                        "policyVersion": "CV_PRIME_PL_APPROVAL_HFC_CV_T15_1.0.1",
+                        "decisionScenario": "UNKNOWN",
+                        "configVersion": "CV_PRIME_PL_APPROVAL_HFC_CV_T15_1.0.1",
+                        "lenderName": "HFC",
+                        "decisionStatus": "APPROVED",
+                        "userType": "OTC",
+                        "debugVariables": {
+                          "bs1Offers": [
+                            {
+                              "high": 34600,
+                              "low": 30000,
+                              "roi": 27.99,
+                              "tenure": 18
+                            },
+                            {
+                              "high": 43300,
+                              "low": 40000,
+                              "roi": 27.99,
+                              "tenure": 24
+                            }
+                          ],
+                          "highPLOffers": [],
+                          "": [],
+                          "ambOffers": [
+                            {
+                              "offerType": "final",
+                              "documentsRequired": [],
+                              "high": 25000,
+                              "minProcessingFee": 1500,
+                              "processingFeePercent": 5,
+                              "low": 25000,
+                              "offerScenario": [
+                                "AMB"
+                              ],
+                              "roi": 31,
+                              "tenure": 6
+                            },
+                            {
+                              "offerType": "final",
+                              "documentsRequired": [],
+                              "high": 75000,
+                              "minProcessingFee": 1500,
+                              "processingFeePercent": 5,
+                              "low": 25000,
+                              "offerScenario": [
+                                "AMB"
+                              ],
+                              "roi": 27.99,
+                              "tenure": 12
+                            },
+                            {
+                              "offerType": "final",
+                              "documentsRequired": [],
+                              "high": 109200,
+                              "minProcessingFee": 1500,
+                              "processingFeePercent": 4,
+                              "low": 30000,
+                              "offerScenario": [
+                                "AMB"
+                              ],
+                              "roi": 27.99,
+                              "tenure": 18
+                            },
+                            {
+                              "offerType": "final",
+                              "documentsRequired": [],
+                              "high": 136600,
+                              "minProcessingFee": 1500,
+                              "processingFeePercent": 4,
+                              "low": 40000,
+                              "offerScenario": [
+                                "AMB"
+                              ],
+                              "roi": 27.99,
+                              "tenure": 24
+                            }
+                          ],
+                          "bs2Offers": [],
+                          "customGridChanges": [
+                            {
+                              "gridName": "miSegment_minROI",
+                              "gridType": "minROICorrection"
+                            }
+                          ],
+                          "dbrOffers": [
+                            {
+                              "offerType": "tentative",
+                              "documentsRequired": [
+                                "bankStatement"
+                              ],
+                              "high": 25000,
+                              "low": 25000,
+                              "offerScenario": [
+                                "DBR"
+                              ],
+                              "roi": 31,
+                              "tenure": 6
+                            },
+                            {
+                              "high": 75000,
+                              "low": 25000,
+                              "roi": 27.99,
+                              "tenure": 12
+                            },
+                            {
+                              "high": 150000,
+                              "low": 30000,
+                              "roi": 27.99,
+                              "tenure": 18
+                            },
+                            {
+                              "high": 150000,
+                              "low": 40000,
+                              "roi": 27.99,
+                              "tenure": 24
+                            }
+                          ],
+                          "miSegment": 1,
+                          "multiplierOffers": [
+                            {
+                              "offerType": "tentative",
+                              "documentsRequired": [
+                                "bankStatement"
+                              ],
+                              "high": 75000,
+                              "low": 25000,
+                              "offerScenario": [
+                                "MULTIPLIER",
+                                "DBR"
+                              ],
+                              "roi": 27.99,
+                              "tenure": 12
+                            },
+                            {
+                              "offerType": "tentative",
+                              "documentsRequired": [
+                                "bankStatement"
+                              ],
+                              "high": 150000,
+                              "low": 30000,
+                              "offerScenario": [
+                                "MULTIPLIER",
+                                "DBR"
+                              ],
+                              "roi": 27.99,
+                              "tenure": 18
+                            },
+                            {
+                              "offerType": "tentative",
+                              "documentsRequired": [
+                                "bankStatement"
+                              ],
+                              "high": 150000,
+                              "low": 40000,
+                              "offerScenario": [
+                                "MULTIPLIER",
+                                "DBR"
+                              ],
+                              "roi": 27.99,
+                              "tenure": 24
+                            }
+                          ],
+                          "isBureauSurrogateEligible": true,
+                          "grids": [
+                            {
+                              "change": 0,
+                              "name": "priceSensitivity"
+                            },
+                            {
+                              "change": 0,
+                              "name": "priceSensitivity"
+                            },
+                            {
+                              "change": 0,
+                              "name": "priceSensitivity"
+                            },
+                            {
+                              "name": "emiCappingIncTenure",
+                              "change_18": 7500
+                            },
+                            {
+                              "change": 0,
+                              "name": "priceSensitivity"
+                            },
+                            {
+                              "name": "emiCappingIncTenure",
+                              "change_24": 7500
+                            }
+                          ],
+                          "userSegment": "SG1"
+                        },
+                        "decisionReasonsCode": [],
+                        "templateId": "CV_PRIME_PL_APPROVAL_T15",
+                        "remarks": {},
+                        "decisionReasons": []
+                      }
+                    ],
+                    "cashFlowAMB120": 186938.22059872243,
+                    "totalCreditAmount": {
+                      "month0": 0,
+                      "month1": 441835.68,
+                      "month2": 726687.27
+                    },
+                    "riskEvents": {
+                      "countInsufficientBalance": 0,
+                      "countChequeBounceOutward": 0,
+                      "countECSBounce": 0,
+                      "countChequeInwardBounce": 0
+                    },
+                    "totalDebitCount": {
+                      "month0": 0,
+                      "month1": 62,
+                      "month2": 97
+                    },
+                    "months": {
+                      "month0": "NOV-2021",
+                      "month1": "OCT-2021",
+                      "month2": "SEP-2021"
+                    },
+                    "cashFlowAMBDays60": 61,
+                    "cashFlowDebitCount30": 4,
+                    "activeAggregateAMBTwoMonths": 115806.37868852458,
+                    "totalCreditCount": {
+                      "month0": 0,
+                      "month1": 54,
+                      "month2": 78
+                    },
+                    "isCVBureauDataAvailable": false,
+                    "aggregateAverageMonthlyBalance": 182766.19,
+                    "version": "1.7.8",
+                    "cashFlowAMB60": 190184.05708057192,
+                    "isBankStatementPresent": true,
+                    "cashFlowDebitCount120": 90,
+                    "cashFlowCreditCount60": 45,
+                    "totalSmsCount": 3164,
+                    "cashFlowDebitCount60": 36,
+                    "cvScore": {
+                      "cvScoreVersion": "2.2.2",
+                      "cvScoreUserCat": "cat1",
+                      "cvScore": 750,
+                      "userType": "OTC",
+                      "asOfDate": "2021-11-11"
+                    },
+                    "cashFlowCreditCount120": 106,
+                    "lenderRiskScore": -215.67869576332362,
+                    "asOfDate": "2021-11-11 11:16:38",
+                    "opsVariables": {
+                      "collections": {
+                        "irisScore": 0.06027484519966512
+                      },
+                      "pricing": {
+                        "pricingCategory": 1,
+                        "tierCategory": "TIER4"
+                      }
+                    }
+                  },
+                  "cvScore": {
+                    "cvScoreVersion": "2.2.2",
+                    "cvScoreUserCat": "cat1",
+                    "cvScore": 750,
+                    "userType": "OTC",
+                    "asOfDate": "2021-11-11"
+                  },
+                  "decisionVariables": "",
+                  "dpUserId": "9999999919"
+                },
+                "properties": {
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "decisionType": {
+                    "type": "string"
+                  },
+                  "medhasVersion": {
+                    "type": "string"
+                  },
+                  "decision": {
+                    "type": "object",
+                    "properties": {
+                      "product": {
+                        "type": "string"
+                      },
+                      "timeEpoch": {
+                        "type": "number"
+                      },
+                      "dpName": {
+                        "type": "string"
+                      },
+                      "creditDecisions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "offers": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "offerType": {
+                                    "type": "string"
+                                  },
+                                  "documentsRequired": {
+                                    "type": "array",
+                                    "items": {}
+                                  },
+                                  "high": {
+                                    "type": "number"
+                                  },
+                                  "minProcessingFee": {
+                                    "type": "number"
+                                  },
+                                  "processingFeePercent": {
+                                    "type": "number"
+                                  },
+                                  "low": {
+                                    "type": "number"
+                                  },
+                                  "offerScenario": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "roi": {
+                                    "type": "number"
+                                  },
+                                  "tenure": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "offerType",
+                                  "documentsRequired",
+                                  "high",
+                                  "minProcessingFee",
+                                  "processingFeePercent",
+                                  "low",
+                                  "offerScenario",
+                                  "roi",
+                                  "tenure"
+                                ]
+                              }
+                            },
+                            "policyVersion": {
+                              "type": "string"
+                            },
+                            "offerType": {
+                              "type": "string"
+                            },
+                            "decisionScenario": {
+                              "type": "string"
+                            },
+                            "configVersion": {
+                              "type": "string"
+                            },
+                            "lenderName": {
+                              "type": "string"
+                            },
+                            "decisionStatus": {
+                              "type": "string"
+                            },
+                            "userType": {
+                              "type": "string"
+                            },
+                            "templateId": {
+                              "type": "string"
+                            },
+                            "decisionReasonsCode": {
+                              "type": "array",
+                              "items": {}
+                            },
+                            "remarks": {
+                              "type": "object",
+                              "properties": {}
+                            },
+                            "decisionReasons": {
+                              "type": "array",
+                              "items": {}
+                            }
+                          }
+                        }
+                      },
+                      "userId": {
+                        "type": "string"
+                      },
+                      "version": {
+                        "type": "string"
+                      },
+                      "status": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "lenderComplianceVariables": {
+                    "type": "object",
+                    "properties": {
+                      "income": {
+                        "type": "object",
+                        "properties": {
+                          "trueSalary": {
+                            "type": "number"
+                          },
+                          "bucketType": {
+                            "type": "string"
+                          },
+                          "version": {
+                            "type": "string"
+                          },
+                          "predictedIncomeBucket": {
+                            "type": "object",
+                            "properties": {
+                              "higherValue": {
+                                "type": "number"
+                              },
+                              "confidence": {
+                                "type": "number"
+                              },
+                              "lowerValue": {
+                                "type": "number"
+                              }
+                            }
+                          },
+                          "trueSalaryConfidence": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "countActiveAccounts": {
+                        "type": "number"
+                      },
+                      "cashFlowAMBDays90": {
+                        "type": "number"
+                      },
+                      "cashFlowAMBDays120": {
+                        "type": "number"
+                      },
+                      "totalDebitAmount": {
+                        "type": "object",
+                        "properties": {
+                          "month0": {
+                            "type": "number"
+                          },
+                          "month1": {
+                            "type": "number"
+                          },
+                          "month2": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "cashFlowAMBDays30": {
+                        "type": "number"
+                      },
+                      "cashFlowCreditCount30": {
+                        "type": "number"
+                      },
+                      "cashFlowAMB30": {
+                        "type": "number"
+                      },
+                      "cashFlowAMB90": {
+                        "type": "number"
+                      },
+                      "allBankAccounts": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "bankCode": {
+                              "type": "string"
+                            },
+                            "accountName": {
+                              "type": "string"
+                            },
+                            "debitCardDebitAmounts": {
+                              "type": "object",
+                              "properties": {
+                                "month0": {
+                                  "type": "null"
+                                },
+                                "month1": {
+                                  "type": "null"
+                                }
+                              }
+                            },
+                            "debitCardTransactionCounts": {
+                              "type": "object",
+                              "properties": {
+                                "month0": {
+                                  "type": "null"
+                                },
+                                "month1": {
+                                  "type": "null"
+                                }
+                              }
+                            },
+                            "debitCounts": {
+                              "type": "object",
+                              "properties": {
+                                "month0": {
+                                  "type": "number"
+                                },
+                                "month1": {
+                                  "type": "number"
+                                },
+                                "month2": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "lastBalanceDate": {
+                              "type": "string"
+                            },
+                            "creditCounts": {
+                              "type": "object",
+                              "properties": {
+                                "month0": {
+                                  "type": "number"
+                                },
+                                "month1": {
+                                  "type": "number"
+                                },
+                                "month2": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "accountNumber": {
+                              "type": "string"
+                            },
+                            "priority": {
+                              "type": "number"
+                            },
+                            "lastBalance": {
+                              "type": "number"
+                            },
+                            "debitCardNumber": {
+                              "type": "null"
+                            },
+                            "debitAmounts": {
+                              "type": "object",
+                              "properties": {
+                                "month0": {
+                                  "type": "number"
+                                },
+                                "month1": {
+                                  "type": "number"
+                                },
+                                "month2": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "creditAmounts": {
+                              "type": "object",
+                              "properties": {
+                                "month0": {
+                                  "type": "number"
+                                },
+                                "month1": {
+                                  "type": "number"
+                                },
+                                "month2": {
+                                  "type": "number"
+                                }
+                              }
+                            },
+                            "amb60": {
+                              "type": "number"
+                            },
+                            "amb30": {
+                              "type": "number"
+                            },
+                            "aggregateAMB": {
+                              "type": "number"
+                            },
+                            "activeAMB": {
+                              "type": "number"
+                            }
+                          },
+                          "required": [
+                            "bankCode",
+                            "accountName",
+                            "debitCardDebitAmounts",
+                            "debitCardTransactionCounts",
+                            "debitCounts",
+                            "lastBalanceDate",
+                            "creditCounts",
+                            "accountNumber",
+                            "priority",
+                            "lastBalance",
+                            "debitCardNumber",
+                            "debitAmounts",
+                            "creditAmounts",
+                            "amb60",
+                            "amb30",
+                            "aggregateAMB",
+                            "activeAMB"
+                          ]
+                        }
+                      },
+                      "monthlyObligation": {
+                        "type": "number"
+                      },
+                      "countAccounts": {
+                        "type": "number"
+                      },
+                      "dvVersion": {
+                        "type": "string"
+                      },
+                      "creditDecisions": {
+                        "type": "array",
+                        "items": {
+                          "type": "object",
+                          "properties": {
+                            "offers": {
+                              "type": "array",
+                              "items": {
+                                "type": "object",
+                                "properties": {
+                                  "offerType": {
+                                    "type": "string"
+                                  },
+                                  "documentsRequired": {
+                                    "type": "array",
+                                    "items": {}
+                                  },
+                                  "high": {
+                                    "type": "number"
+                                  },
+                                  "minProcessingFee": {
+                                    "type": "number"
+                                  },
+                                  "processingFeePercent": {
+                                    "type": "number"
+                                  },
+                                  "low": {
+                                    "type": "number"
+                                  },
+                                  "offerScenario": {
+                                    "type": "array",
+                                    "items": {
+                                      "type": "string"
+                                    }
+                                  },
+                                  "roi": {
+                                    "type": "number"
+                                  },
+                                  "tenure": {
+                                    "type": "number"
+                                  }
+                                },
+                                "required": [
+                                  "offerType",
+                                  "documentsRequired",
+                                  "high",
+                                  "minProcessingFee",
+                                  "processingFeePercent",
+                                  "low",
+                                  "offerScenario",
+                                  "roi",
+                                  "tenure"
+                                ]
+                              }
+                            },
+                            "policyVersion": {
+                              "type": "string"
+                            },
+                            "decisionScenario": {
+                              "type": "string"
+                            },
+                            "configVersion": {
+                              "type": "string"
+                            },
+                            "lenderName": {
+                              "type": "string"
+                            },
+                            "decisionStatus": {
+                              "type": "string"
+                            },
+                            "userType": {
+                              "type": "string"
+                            },
+                            "debugVariables": {
+                              "type": "object",
+                              "properties": {
+                                "bs1Offers": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "high": {
+                                        "type": "number"
+                                      },
+                                      "low": {
+                                        "type": "number"
+                                      },
+                                      "roi": {
+                                        "type": "number"
+                                      },
+                                      "tenure": {
+                                        "type": "number"
+                                      }
+                                    },
+                                    "required": [
+                                      "high",
+                                      "low",
+                                      "roi",
+                                      "tenure"
+                                    ]
+                                  }
+                                },
+                                "highPLOffers": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "ambOffers": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "offerType": {
+                                        "type": "string"
+                                      },
+                                      "documentsRequired": {
+                                        "type": "array",
+                                        "items": {}
+                                      },
+                                      "high": {
+                                        "type": "number"
+                                      },
+                                      "minProcessingFee": {
+                                        "type": "number"
+                                      },
+                                      "processingFeePercent": {
+                                        "type": "number"
+                                      },
+                                      "low": {
+                                        "type": "number"
+                                      },
+                                      "offerScenario": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "roi": {
+                                        "type": "number"
+                                      },
+                                      "tenure": {
+                                        "type": "number"
+                                      }
+                                    },
+                                    "required": [
+                                      "offerType",
+                                      "documentsRequired",
+                                      "high",
+                                      "minProcessingFee",
+                                      "processingFeePercent",
+                                      "low",
+                                      "offerScenario",
+                                      "roi",
+                                      "tenure"
+                                    ]
+                                  }
+                                },
+                                "bs2Offers": {
+                                  "type": "array",
+                                  "items": {}
+                                },
+                                "customGridChanges": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "gridName": {
+                                        "type": "string"
+                                      },
+                                      "gridType": {
+                                        "type": "string"
+                                      }
+                                    }
+                                  }
+                                },
+                                "dbrOffers": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "offerType": {
+                                        "type": "string"
+                                      },
+                                      "documentsRequired": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "high": {
+                                        "type": "number"
+                                      },
+                                      "low": {
+                                        "type": "number"
+                                      },
+                                      "offerScenario": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "roi": {
+                                        "type": "number"
+                                      },
+                                      "tenure": {
+                                        "type": "number"
+                                      }
+                                    },
+                                    "required": [
+                                      "high",
+                                      "low",
+                                      "roi",
+                                      "tenure"
+                                    ]
+                                  }
+                                },
+                                "miSegment": {
+                                  "type": "number"
+                                },
+                                "multiplierOffers": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "offerType": {
+                                        "type": "string"
+                                      },
+                                      "documentsRequired": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "high": {
+                                        "type": "number"
+                                      },
+                                      "low": {
+                                        "type": "number"
+                                      },
+                                      "offerScenario": {
+                                        "type": "array",
+                                        "items": {
+                                          "type": "string"
+                                        }
+                                      },
+                                      "roi": {
+                                        "type": "number"
+                                      },
+                                      "tenure": {
+                                        "type": "number"
+                                      }
+                                    },
+                                    "required": [
+                                      "offerType",
+                                      "documentsRequired",
+                                      "high",
+                                      "low",
+                                      "offerScenario",
+                                      "roi",
+                                      "tenure"
+                                    ]
+                                  }
+                                },
+                                "isBureauSurrogateEligible": {
+                                  "type": "boolean"
+                                },
+                                "grids": {
+                                  "type": "array",
+                                  "items": {
+                                    "type": "object",
+                                    "properties": {
+                                      "change": {
+                                        "type": "number"
+                                      },
+                                      "name": {
+                                        "type": "string"
+                                      },
+                                      "change_18": {
+                                        "type": "number"
+                                      },
+                                      "change_24": {
+                                        "type": "number"
+                                      }
+                                    },
+                                    "required": [
+                                      "change",
+                                      "name"
+                                    ]
+                                  }
+                                },
+                                "userSegment": {
+                                  "type": "string"
+                                }
+                              }
+                            },
+                            "decisionReasonsCode": {
+                              "type": "array",
+                              "items": {}
+                            },
+                            "templateId": {
+                              "type": "string"
+                            },
+                            "remarks": {
+                              "type": "object",
+                              "properties": {}
+                            },
+                            "decisionReasons": {
+                              "type": "array",
+                              "items": {}
+                            }
+                          }
+                        }
+                      },
+                      "cashFlowAMB120": {
+                        "type": "number"
+                      },
+                      "totalCreditAmount": {
+                        "type": "object",
+                        "properties": {
+                          "month0": {
+                            "type": "number"
+                          },
+                          "month1": {
+                            "type": "number"
+                          },
+                          "month2": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "riskEvents": {
+                        "type": "object",
+                        "properties": {
+                          "countInsufficientBalance": {
+                            "type": "number"
+                          },
+                          "countChequeBounceOutward": {
+                            "type": "number"
+                          },
+                          "countECSBounce": {
+                            "type": "number"
+                          },
+                          "countChequeInwardBounce": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "totalDebitCount": {
+                        "type": "object",
+                        "properties": {
+                          "month0": {
+                            "type": "number"
+                          },
+                          "month1": {
+                            "type": "number"
+                          },
+                          "month2": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "months": {
+                        "type": "object",
+                        "properties": {
+                          "month0": {
+                            "type": "string"
+                          },
+                          "month1": {
+                            "type": "string"
+                          },
+                          "month2": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "cashFlowAMBDays60": {
+                        "type": "number"
+                      },
+                      "cashFlowDebitCount30": {
+                        "type": "number"
+                      },
+                      "activeAggregateAMBTwoMonths": {
+                        "type": "number"
+                      },
+                      "totalCreditCount": {
+                        "type": "object",
+                        "properties": {
+                          "month0": {
+                            "type": "number"
+                          },
+                          "month1": {
+                            "type": "number"
+                          },
+                          "month2": {
+                            "type": "number"
+                          }
+                        }
+                      },
+                      "isCVBureauDataAvailable": {
+                        "type": "boolean"
+                      },
+                      "aggregateAverageMonthlyBalance": {
+                        "type": "number"
+                      },
+                      "version": {
+                        "type": "string"
+                      },
+                      "cashFlowAMB60": {
+                        "type": "number"
+                      },
+                      "isBankStatementPresent": {
+                        "type": "boolean"
+                      },
+                      "cashFlowDebitCount120": {
+                        "type": "number"
+                      },
+                      "cashFlowCreditCount60": {
+                        "type": "number"
+                      },
+                      "totalSmsCount": {
+                        "type": "number"
+                      },
+                      "cashFlowDebitCount60": {
+                        "type": "number"
+                      },
+                      "cvScore": {
+                        "type": "object",
+                        "properties": {
+                          "cvScoreVersion": {
+                            "type": "string"
+                          },
+                          "cvScoreUserCat": {
+                            "type": "string"
+                          },
+                          "cvScore": {
+                            "type": "number"
+                          },
+                          "userType": {
+                            "type": "string"
+                          },
+                          "asOfDate": {
+                            "type": "string"
+                          }
+                        }
+                      },
+                      "cashFlowCreditCount120": {
+                        "type": "number"
+                      },
+                      "lenderRiskScore": {
+                        "type": "number"
+                      },
+                      "asOfDate": {
+                        "type": "string"
+                      },
+                      "opsVariables": {
+                        "type": "object",
+                        "properties": {
+                          "collections": {
+                            "type": "object",
+                            "properties": {
+                              "irisScore": {
+                                "type": "number"
+                              }
+                            }
+                          },
+                          "pricing": {
+                            "type": "object",
+                            "properties": {
+                              "pricingCategory": {
+                                "type": "number"
+                              },
+                              "tierCategory": {
+                                "type": "string"
+                              }
+                            }
+                          }
+                        }
+                      }
+                    }
+                  },
+                  "cvScore": {
+                    "type": "object",
+                    "properties": {
+                      "cvScoreVersion": {
+                        "type": "string"
+                      },
+                      "cvScoreUserCat": {
+                        "type": "string"
+                      },
+                      "cvScore": {
+                        "type": "number"
+                      },
+                      "userType": {
+                        "type": "string"
+                      },
+                      "asOfDate": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "decisionVariables": {
+                    "type": "string"
+                  },
+                  "dpUserId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/v2/calculate-emi": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "EMI Calculator",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "loanId": "{{loanId}}",
+                  "loanAmount": 25000,
+                  "tenure": 12
+                },
+                "properties": {
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "loanAmount": {
+                    "type": "number"
+                  },
+                  "tenure": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/v4/additional-details": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Send Additional Details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "loanId": "{{loanId}}",
+                  "desiredLoanAmount": 50000,
+                  "organizationName": "abc.com",
+                  "motherName": "Jane Doe",
+                  "riskCategory": "high",
+                  "officeAddressLine1": "Hitec City",
+                  "officeAddressCity": "Hyderabad",
+                  "officeAddressDistrict": "Hyderabad",
+                  "officeAddressState": "Telangana",
+                  "officeAddressPincode": "500081",
+                  "currentResidenceType": "PAYING GUEST",
+                  "workEmailId": "xyz@abc.com",
+                  "workExperience": "100",
+                  "fatherName": "Desmond Doe",
+                  "educationalQualification": "GRADUATE",
+                  "maritalStatus": "SINGLE"
+                },
+                "properties": {
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "desiredLoanAmount": {
+                    "type": "number"
+                  },
+                  "organizationName": {
+                    "type": "string"
+                  },
+                  "motherName": {
+                    "type": "string"
+                  },
+                  "riskCategory": {
+                    "type": "string"
+                  },
+                  "officeAddressLine1": {
+                    "type": "string"
+                  },
+                  "officeAddressCity": {
+                    "type": "string"
+                  },
+                  "officeAddressDistrict": {
+                    "type": "string"
+                  },
+                  "officeAddressState": {
+                    "type": "string"
+                  },
+                  "officeAddressPincode": {
+                    "type": "string"
+                  },
+                  "currentResidenceType": {
+                    "type": "string"
+                  },
+                  "workEmailId": {
+                    "type": "string"
+                  },
+                  "workExperience": {
+                    "type": "string"
+                  },
+                  "fatherName": {
+                    "type": "string"
+                  },
+                  "educationalQualification": {
+                    "type": "string"
+                  },
+                  "maritalStatus": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/docs/photoProof": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Send Selfie",
+        "requestBody": {
+          "content": {
+            "multipart/form-data": {
+              "schema": {
+                "type": "object",
+                "properties": {
+                  "": {
+                    "type": "string",
+                    "format": "binary"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          },
+          {
+            "name": "proofType",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "selfie"
+          },
+          {
+            "name": "loanId",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            },
+            "example": "{{loanId}}"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/v4/banking-details": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Send Bank Details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "loanId": "{{loanId}}",
+                  "disbursalBankAccount": {
+                    "bankCode": "SBIN",
+                    "accountType": "Savings",
+                    "accountNumber": "1234567898769",
+                    "ifsc": "SBI09556565"
+                  },
+                  "repaymentBankAccount": {
+                    "bankCode": "HDFC",
+                    "accountType": "Savings",
+                    "accountNumber": "34343431234",
+                    "ifsc": "HDFC4454545"
+                  }
+                },
+                "properties": {
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "disbursalBankAccount": {
+                    "type": "object",
+                    "properties": {
+                      "bankCode": {
+                        "type": "string"
+                      },
+                      "accountType": {
+                        "type": "string"
+                      },
+                      "accountNumber": {
+                        "type": "string"
+                      },
+                      "ifsc": {
+                        "type": "string"
+                      }
+                    }
+                  },
+                  "repaymentBankAccount": {
+                    "type": "object",
+                    "properties": {
+                      "bankCode": {
+                        "type": "string"
+                      },
+                      "accountType": {
+                        "type": "string"
+                      },
+                      "accountNumber": {
+                        "type": "string"
+                      },
+                      "ifsc": {
+                        "type": "string"
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/selected-offer": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Send Selected Offer Details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "loanId": "{{loanId}}",
+                  "loanAmount": 25000,
+                  "tenure": 6,
+                  "roi": 27,
+                  "emi": 2413
+                },
+                "properties": {
+                  "loanId": {
+                    "type": "string"
+                  },
+                  "loanAmount": {
+                    "type": "number"
+                  },
+                  "tenure": {
+                    "type": "number"
+                  },
+                  "roi": {
+                    "type": "number"
+                  },
+                  "emi": {
+                    "type": "number"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/get-webview": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Get Webview URL",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "loanId": "{{loanId}}"
+                },
+                "properties": {
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/get-servicing-webview": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Get Payment Webview",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "loanId": "{{loanId}}"
+                },
+                "properties": {
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/loans/get-dues": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Get Dues API",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "loanId": "623714e48aec4d20875eca0e"
+                },
+                "properties": {
+                  "loanId": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/get-pincode-details": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Pincode details",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "pincode": "500081"
+                },
+                "properties": {
+                  "pincode": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/mw/dedupe-verification": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Dedupe API",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "panNumber": "AXADF0909S"
+                },
+                "properties": {
+                  "panNumber": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    },
+    "/marketplace/loans/v1/dedupe-service": {
+      "post": {
+        "tags": [
+          "General"
+        ],
+        "summary": "Dedupe as service",
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "type": "object",
+                "example": {
+                  "requestId": "111111113",
+                  "hashEnabled": false,
+                  "panNumber": "AXADF0909S"
+                },
+                "properties": {
+                  "requestId": {
+                    "type": "string"
+                  },
+                  "hashEnabled": {
+                    "type": "boolean"
+                  },
+                  "panNumber": {
+                    "type": "string"
+                  }
+                }
+              }
+            }
+          }
+        },
+        "parameters": [
+          {
+            "name": "Content-Type",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "application/json"
+          },
+          {
+            "name": "apikey",
+            "in": "header",
+            "schema": {
+              "type": "string"
+            },
+            "example": "kLElQYa3GRjhtyW8VQAdeX6eU9sv7CWt"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Successful response",
+            "content": {
+              "application/json": {}
+            }
+          }
+        }
+      }
+    }
+  }
+}
